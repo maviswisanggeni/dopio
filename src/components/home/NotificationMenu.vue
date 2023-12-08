@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     getStatus(inventory) {
-      if (inventory.stock == 0) return 'EMPTY';
+      if (inventory.stock <= 0) return 'EMPTY';
       if (inventory.alertIn === null) return 'AVAILABLE';
       if (inventory.stock <= inventory.alertIn) return 'ALMOST_OUT';
       return 'AVAILABLE';
