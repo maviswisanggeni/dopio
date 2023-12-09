@@ -32,7 +32,7 @@
         <q-separator />
         <div class="row justify-between items-start">
           <div class="col-11 toogle-label">Print</div>
-          <q-toggle size="32px" v-model="company.isPrintReceiptAtSave" color="primary" dense />
+          <q-toggle size="32px" v-model="company.isPrintReceiptOnSave" color="primary" dense />
           <div class="label-input">Print otomatis setelah menyimpan penjualan</div>
         </div>
         <div class="row justify-between items-start">
