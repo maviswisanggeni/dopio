@@ -23,7 +23,15 @@
               <base-select-input name="Jenis Kas" v-model="cash.type" :options="options" rules="required" />
             </div>
             <div class="col-12">
-              <base-money-input name="Nominal" v-model="cash.amount" rules="required" />
+              <base-money-input
+                name="Nominal"
+                v-model="cash.amount"
+                @input="validateInput"
+                rules="required"
+                :min="0"
+                :max="100000000"
+                type="number"
+              />
             </div>
             <div class="col-12">
               <base-text-area name="Deskripsi" v-model="cash.description" rules="required" />
@@ -76,6 +84,9 @@ export default {
         this.dialog = false;
         await this.$store.dispatch('cash/refresh', this);
       });
+    },
+    validateInput() {
+      this.cash.amount = Math.max(0, Math.min(1000000000, parseInt(this.cash.amount) || 0));
     },
   },
 };
