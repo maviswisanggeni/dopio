@@ -1,0 +1,61 @@
+{
+  "name": "dopio-backoffice-webapp",
+  "version": "1.0.0",
+  "description": "A POS System App",
+  "productName": "Dopio Admin",
+  "author": "'Grha Digital Indonesia' <'gdigitalindonesia@gmail.com'>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@quasar/cli": "^1.1.3",
+    "@quasar/extras": "^1.0.0",
+    "@quasar/quasar-ui-qcalendar": "^3.3.5",
+    "apexcharts": "^3.25.0",
+    "axios": "^0.21.1",
+    "dayjs": "^1.10.4",
+    "js-file-download": "^0.4.12",
+    "lodash": "^4.17.20",
+    "portal-vue": "^2.1.7",
+    "quasar": "1.15.3",
+    "socket.io-client": "^2.3.1",
+    "v-money": "^0.8.1",
+    "vee-validate": "^3.4.5",
+    "vue-advanced-cropper": "^1.2.5",
+    "vue-apexcharts": "^1.6.0",
+    "vue-avatar-cropper": "^1.0.9",
+    "vue-cropperjs": "^4.2.0",
+    "vue-ctk-date-time-picker": "^2.5.0",
+    "vue-easy-print": "^0.0.8",
+    "vue-html-to-paper": "^1.3.1",
+    "vue-i18n": "^8.0.0",
+    "vue-socket.io": "^3.0.10"
+  },
+  "devDependencies": {
+    "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-dotenv": "^1.0.5",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-vue": "^6.1.2"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
