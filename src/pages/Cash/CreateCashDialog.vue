@@ -60,9 +60,19 @@ export default {
     value: function(val) {
       if (val == true) this.setCash();
     },
+    'cash.amount': 'validateAmount',
   },
 
   methods: {
+    validateAmount() {
+      
+      if (this.cash.amount > 1000000000) {
+        
+        this.cash.amount = 0;
+      }
+
+      
+    },
     setCash() {
       this.cash = { type: null, nominal: 0, description: null };
     },
