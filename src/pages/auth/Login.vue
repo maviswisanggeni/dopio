@@ -75,16 +75,18 @@ export default {
     },
 
     setPhoneNumber() {
-      const appendPhoneNumber = this.phoneInput.substr(0, 2);
+      const trimmedPhoneInput = this.phoneInput.trim();
+
+      const appendPhoneNumber = trimmedPhoneInput.substr(0, 2);
       if (appendPhoneNumber === '08') {
-        this.phone = '+62' + this.phoneInput.slice(1, 13);
+        this.phone = '+62' + trimmedPhoneInput.slice(1, 13);
         return;
       }
       if (appendPhoneNumber.substr(0, 1) === '8') {
-        this.phone = '+62' + this.phoneInput.slice(0, 13);
+        this.phone = '+62' + trimmedPhoneInput.slice(0, 13);
         return;
       }
-      this.phone = this.phoneInput;
+      this.phone = trimmedPhoneInput;
     },
   },
 };
