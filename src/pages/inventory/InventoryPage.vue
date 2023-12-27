@@ -1,22 +1,42 @@
 <template>
   <q-page class="main-page">
     <portal to="action-bar">
-      <span class="text-title q-mr-xs">Persediaan</span>
+      <span class="text-title q-mr-xs" @click="toggleFilterBar">Persediaan</span>
     </portal>
 
-    <div class="row q-gutter-y-sm justify-center items-end q-mb-md">
-      <div class="col-xs-12 col-sm-4 col-md-2">
-        <base-select-input v-model="filter.status" :options="statuses" name="Status" />
+    <!-- Filter bar -->
+    <q-form @submit="applyFilters" class="q-gutter-md" v-show="isFilterOpen">
+      <div class="row justify-center items-end">
+        <div class="col-xs-12 col-sm-4 col-md-2">
+          <base-select-input
+            v-model="filter.status"
+            :options="statuses"
+            name="Status"
+            @input="applyFilters"
+          />
+        </div>
+        <q-space></q-space>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+          <q-input
+            class="app-input"
+            outlined
+            dense
+            debounce="150"
+            color="blue"
+            bg-color="white"
+            v-model="filter.name"
+            @input="applyFilters"
+          >
+            <template v-slot:prepend>
+              <q-icon size="20px" name="search" />
+            </template>
+          </q-input>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          <q-btn label="Apply Filters" color="primary" type="submit" />
+        </div>
       </div>
-      <q-space></q-space>
-      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-        <q-input class="app-input" outlined dense debounce="150" color="blue" bg-color="white" v-model="filter.name">
-          <template v-slot:prepend>
-            <q-icon size="20px" name="search" />
-          </template>
-        </q-input>
-      </div>
-    </div>
+    </q-form>
 
     <q-table
       :data="inventories"
@@ -55,6 +75,7 @@ export default {
   data() {
     return {
       filter: { name: '', status: null },
+      isFilterOpen: false, // New property to track filter bar visibility
       pagination: { page: 1, rowsPerPage: 25, rowsNumber: 25 },
       columns: [
         { name: 'label', label: 'Nama', field: 'label', align: 'left', sortable: true },
@@ -104,6 +125,16 @@ export default {
         if (this.filter.status) isFilterStatus = item.status == this.filter.status;
         return isFilterName && isFilterStatus;
       });
+    },
+    toggleFilterBar() {
+      this.isFilterOpen = !this.isFilterOpen;
+    },
+    applyFilters() {
+      const filteredRows = this.filterInventories(this.inventories);
+      // Do something with filteredRows if needed
+
+      // Close the filter bar after applying filters
+      this.isFilterOpen = false;
     },
   },
 };
