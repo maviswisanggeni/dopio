@@ -100,7 +100,7 @@ export default {
   },
   methods: {
     getStatus(ingredient) {
-      if (ingredient.stock == 0) return 'EMPTY';
+      if (ingredient.stock <= 0) return 'EMPTY';
       if (ingredient.alertIn === null) return 'AVAILABLE';
       if (ingredient.stock <= ingredient.alertIn) return 'ALMOST_OUT';
       return 'AVAILABLE';
