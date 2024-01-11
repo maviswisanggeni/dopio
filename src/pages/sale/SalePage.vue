@@ -111,6 +111,9 @@ export default {
       this.isEditDialogOpen = true;
     },
     async downloadExcel() {
+      if (!this.filter.startDate || !this.filter.endDate) {
+        return this.$q.notify({ message: 'Tanggal mulai dan tanggal selesai harus diisi', color: 'red' });
+      }
       const res = await this.$axios.get('/sale/excel', { params: this.filter, responseType: 'blob' });
       const fileName = res.headers['content-disposition'].split('filename=')[1];
       fileDownload(res.data, fileName);
